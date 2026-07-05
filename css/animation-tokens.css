@@ -1,0 +1,427 @@
+/* =========================================
+   ANIMATION TOKENS
+   Standardized timing, easing, and delays
+   ========================================= */
+
+:root {
+    /* Durations */
+    --duration-micro: 150ms;
+    /* Hovers, clicks, micro-feedback */
+    --duration-short: 300ms;
+    /* Small reveals, tooltips */
+    --duration-medium: 500ms;
+    /* Section transitions, modals */
+    --duration-long: 800ms;
+    /* Hero reveals, major animations */
+
+    /* Easings - Brand Expression */
+    --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+    /* Standard deceleration */
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    /* Symmetric */
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Playful overshoot */
+    --ease-elastic: cubic-bezier(0.5, 1.8, 0.5, 0.8);
+    /* Springy */
+    --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+    /* Gentle */
+
+    /* Stagger Delays */
+    --stagger-1: 0ms;
+    --stagger-2: 100ms;
+    --stagger-3: 200ms;
+    --stagger-4: 300ms;
+    --stagger-5: 400ms;
+}
+
+/* =========================================
+   HERO STAGGERED TEXT REVEAL
+   ========================================= */
+
+.hero-title {
+    overflow: hidden;
+}
+
+.hero-title .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: wordReveal var(--duration-long) var(--ease-out) forwards;
+}
+
+.hero-title .word:nth-child(1) {
+    animation-delay: var(--stagger-1);
+}
+
+.hero-title .word:nth-child(2) {
+    animation-delay: var(--stagger-2);
+}
+
+.hero-title .word:nth-child(3) {
+    animation-delay: var(--stagger-3);
+}
+
+.hero-title .word:nth-child(4) {
+    animation-delay: var(--stagger-4);
+}
+
+.hero-title .word:nth-child(5) {
+    animation-delay: var(--stagger-5);
+}
+
+@keyframes wordReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Badge Pulse */
+.section-tag {
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 var(--accent-primary);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 20px 5px transparent;
+        transform: scale(1.02);
+    }
+}
+
+/* Scroll Arrow Bounce */
+.scroll-hint {
+    animation: arrowBounce 2s var(--ease-bounce) infinite;
+}
+
+@keyframes arrowBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* =========================================
+   BUTTON & LINK MICRO-INTERACTIONS
+   ========================================= */
+
+.btn {
+    position: relative;
+    transition:
+        transform var(--duration-micro) var(--ease-out),
+        box-shadow var(--duration-micro) var(--ease-out),
+        background var(--duration-micro) var(--ease-out);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Link Underline Grow */
+.nav-link,
+.case-link {
+    position: relative;
+}
+
+.nav-link::after,
+.case-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-primary);
+    transition: width var(--duration-short) var(--ease-out), left var(--duration-short) var(--ease-out);
+}
+
+.nav-link:hover::after,
+.case-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* =========================================
+   NAVBAR SCROLL BEHAVIOR
+   ========================================= */
+
+.navbar {
+    transition:
+        padding var(--duration-short) var(--ease-out),
+        background var(--duration-short) var(--ease-out),
+        backdrop-filter var(--duration-short) var(--ease-out);
+}
+
+.navbar.scrolled {
+    padding: 0.5rem 2rem;
+    background: rgba(var(--bg-primary-rgb), 0.85);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   CASE CARD HOVER EFFECTS
+   ========================================= */
+
+.case-card {
+    transition:
+        transform var(--duration-short) var(--ease-out),
+        box-shadow var(--duration-short) var(--ease-out);
+}
+
+.case-card:hover {
+    transform: translateY(-8px) rotateX(2deg);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px var(--accent-primary);
+}
+
+/* =========================================
+   STAT NUMBER GLOW
+   ========================================= */
+
+.stat-number {
+    transition: text-shadow var(--duration-short) var(--ease-out);
+}
+
+.stat-card:hover .stat-number {
+    text-shadow: 0 0 30px var(--accent-primary);
+}
+
+/* =========================================
+   SOLUTION CARD ICON ANIMATION
+   ========================================= */
+
+.solution-card .icon-container {
+    transition: transform var(--duration-short) var(--ease-bounce);
+}
+
+.solution-card:hover .icon-container {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* =========================================
+   FADE REVEAL ENHANCEMENT
+   ========================================= */
+
+.fade-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity var(--duration-medium) var(--ease-out),
+        transform var(--duration-medium) var(--ease-out);
+}
+
+.fade-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays for child elements */
+.fade-reveal.delay-1 {
+    transition-delay: 100ms;
+}
+
+.fade-reveal.delay-2 {
+    transition-delay: 200ms;
+}
+
+.fade-reveal.delay-3 {
+    transition-delay: 300ms;
+}
+
+.fade-reveal.delay-4 {
+    transition-delay: 400ms;
+}
+
+/* =========================================
+   QUESTION CARD TYPEWRITER EFFECT
+   ========================================= */
+
+.question-card {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition:
+        opacity var(--duration-medium) var(--ease-out),
+        transform var(--duration-medium) var(--ease-out);
+}
+
+.question-card.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.question-card:nth-child(1) {
+    transition-delay: 0ms;
+}
+
+.question-card:nth-child(2) {
+    transition-delay: 150ms;
+}
+
+.question-card:nth-child(3) {
+    transition-delay: 300ms;
+}
+
+.question-card:nth-child(4) {
+    transition-delay: 450ms;
+}
+
+/* =========================================
+   MIRROR GLOW PULSE (IDLE STATE)
+   ========================================= */
+
+.mirror-visual-wrapper {
+    animation: mirrorGlow 3s ease-in-out infinite;
+}
+
+@keyframes mirrorGlow {
+
+    0%,
+    100% {
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.5),
+            0 0 0 1px rgba(255, 255, 255, 0.1),
+            0 0 30px rgba(var(--accent-primary-rgb), 0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.5),
+            0 0 0 1px rgba(255, 255, 255, 0.2),
+            0 0 60px rgba(var(--accent-primary-rgb), 0.4);
+    }
+}
+
+/* =========================================
+   HASHTAG FLOAT
+   ========================================= */
+
+.hashtags span {
+    display: inline-block;
+    animation: floatTag 3s ease-in-out infinite;
+}
+
+.hashtags span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.hashtags span:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.hashtags span:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes floatTag {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* =========================================
+   PARALLAX EFFECTS
+   ========================================= */
+
+/* Hero Parallax - GPU acceleration */
+.hero-bg-layer,
+.gate-content {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+/* Gradient Orbs Floating Animation */
+.gradient-orb {
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
+.gradient-orb.orb-1 {
+    animation: orbFloat1 20s ease-in-out infinite;
+}
+
+.gradient-orb.orb-2 {
+    animation: orbFloat2 25s ease-in-out infinite;
+}
+
+.gradient-orb.orb-3 {
+    animation: orbFloat3 18s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+        transform: translate(30px, -20px) scale(1.05);
+    }
+
+    50% {
+        transform: translate(-20px, 30px) scale(0.95);
+    }
+
+    75% {
+        transform: translate(20px, 20px) scale(1.02);
+    }
+}
+
+@keyframes orbFloat2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(-40px, 20px) scale(1.08);
+    }
+
+    66% {
+        transform: translate(30px, -30px) scale(0.92);
+    }
+}
+
+@keyframes orbFloat3 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(25px, -25px) scale(1.1);
+    }
+}
+
+/* Mouse Parallax Ready */
+[data-mouse-parallax] {
+    will-change: transform;
+    transition: transform 0.3s ease-out;
+}

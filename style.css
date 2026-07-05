@@ -1,0 +1,365 @@
+/* --- CSS Variables & Theming --- */
+:root {
+    --transition-speed: 0.6s;
+    --font-main: 'Inter', sans-serif;
+    --font-display: 'Outfit', sans-serif;
+    --sidebar-width: 0px;
+    /* Future proofing */
+}
+
+/* Dark Mode (Elegant Premium Tech) */
+[data-theme="dark"] {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #161621;
+    --text-primary: #ffffff;
+    --text-secondary: #8892b0;
+
+    /* Neon Cyan & Electric Purple */
+    --accent-color: #00f3ff;
+    --accent-secondary: #bc13fe;
+    --accent-glow: 0 0 15px rgba(0, 243, 255, 0.6), 0 0 30px rgba(188, 19, 254, 0.2);
+
+    --border-color: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(10, 10, 15, 0.85);
+
+    --font-heading: 'Outfit', sans-serif;
+
+    /* Gate Pattern: Tech Grid */
+    --gate-pattern: radial-gradient(circle at center, transparent 0%, #000 100%),
+        linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+    --gate-size: 40px 40px;
+}
+
+/* Light Mode (Anime Pixel Art) */
+[data-theme="light"] {
+    --bg-primary: #fdf6f6;
+    --bg-secondary: #ffffff;
+    --text-primary: #2b2b2b;
+    --text-secondary: #666666;
+
+    /* Soft Anime Pink & Sky Blue */
+    --accent-color: #ff7eb3;
+    --accent-secondary: #7afcff;
+    --accent-glow: 4px 4px 0px rgba(0, 0, 0, 1);
+    /* Pixel Shadow */
+
+    --border-color: #000000;
+    --glass-bg: rgba(255, 255, 255, 0.95);
+
+    --font-heading: 'VT323', monospace;
+
+    /* Gate Pattern: Dotted/Halftone */
+    --gate-pattern: radial-gradient(#000000 1px, transparent 1px);
+    --gate-size: 20px 20px;
+}
+
+/* --- Reset & Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    cursor: default;
+    /* We might want a custom cursor later */
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    overflow: hidden;
+    /* Hide scrollbar */
+}
+
+/* Custom Scrollbar for non-snap elements */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: 3px;
+}
+
+/* --- Loader --- */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-out;
+}
+
+.loader-content h2 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    animation: loaderPulse 1.5s infinite;
+}
+
+@keyframes loaderPulse {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- Header --- */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    background: var(--glass-bg);
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--transition-speed);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    /* Optional: Invert logo in light mode if needed, but assuming user logo works for both */
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.main-nav {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-link {
+    position: relative;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* --- Theme Toggle with Animation --- */
+.theme-toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    width: 60px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.theme-toggle .toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+/* State changes driven by data-theme attribute on body/html */
+[data-theme="dark"] .theme-toggle .toggle-thumb {
+    transform: translateX(30px);
+    background: #ffffff;
+    /* Moon color */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Ensure the toggle visually represents the target state */
+
+/* --- Main Layout --- */
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.scroll-section {
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+    border-bottom: 1px solid var(--border-color);
+    /* Gate Background Effect */
+    background-image: var(--gate-pattern);
+    background-size: var(--gate-size);
+}
+
+.content-wrapper {
+    z-index: 5;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scroll-section.active .content-wrapper {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* --- Typography & Specifics --- */
+.main-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 6rem);
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+}
+
+.highlight {
+    color: var(--accent-color);
+    text-shadow: var(--accent-glow);
+    display: inline-block;
+}
+
+.subtitle {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+/* --- Gate Transitions (Door Grip) --- */
+.gate-left,
+.gate-right {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--bg-primary);
+    z-index: 4;
+    /* Below content (5) but above pattern */
+    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    border-color: var(--accent-color);
+}
+
+.gate-left {
+    left: 0;
+    border-right: 2px solid var(--accent-color);
+    transform-origin: left;
+}
+
+.gate-right {
+    right: 0;
+    border-left: 2px solid var(--accent-color);
+    transform-origin: right;
+}
+
+/* Door Content / Grip Details */
+.gate-left::after,
+.gate-right::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 60px;
+    background: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+    transform: translateY(-50%);
+}
+
+.gate-left::after {
+    right: 10px;
+}
+
+.gate-right::after {
+    left: 10px;
+}
+
+/* Active State: Doors Open */
+.scroll-section.active .gate-left {
+    transform: translateX(-100%);
+}
+
+.scroll-section.active .gate-right {
+    transform: translateX(100%);
+}

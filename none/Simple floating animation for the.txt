@@ -1,0 +1,14 @@
+// Simple floating animation for the text
+const text = document.querySelector('.error-text');
+
+let offset = 0;
+function animate() {
+  offset += 0.5;
+  text.setAttribute(
+    'transform',
+    `translate(0, ${Math.sin(offset * 0.05) * 4})`
+  );
+  requestAnimationFrame(animate);
+}
+
+animate();

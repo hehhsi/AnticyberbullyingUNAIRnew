@@ -1,0 +1,149 @@
+:root {
+    /* =========================================
+     TYPOGRAPHY CONSTANTS
+     ========================================= */
+    --font-primary: 'Inter', sans-serif;
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-pixel: 'Press Start 2P', cursive;
+
+    /* Scale */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    --text-hero: clamp(2.5rem, 5vw, 4.5rem);
+
+    /* =========================================
+     SPACING CONSTANTS
+     ========================================= */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --section-padding: var(--space-20) var(--space-4);
+
+    /* =========================================
+     TRANSITIONS
+     ========================================= */
+    --transition-fast: 200ms ease;
+    --transition-normal: 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-slow: 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* =========================================
+   THEME: DARK MODE (DEFAULT)
+   ========================================= */
+[data-theme="dark"] {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-tertiary: #1a1a2e;
+    --bg-glass: rgba(26, 26, 46, 0.6);
+    --bg-card: rgba(18, 18, 26, 0.8);
+
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0b0;
+    --text-muted: #6b6b7b;
+
+    --accent-primary: #00d4ff;
+    /* Cyan */
+    --accent-secondary: #8b5cf6;
+    /* Purple */
+    --accent-glow: rgba(0, 212, 255, 0.5);
+
+    --status-danger: #ef4444;
+    --status-danger-dark: #7f1d1d;
+    --status-success: #10b981;
+    --status-warning: #f59e0b;
+
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+    /* RGB variants for animations */
+    --accent-primary-rgb: 0, 212, 255;
+    --bg-primary-rgb: 10, 10, 15;
+
+    --font-family-headings: var(--font-heading);
+    --decorative-element-opacity: 0.8;
+}
+
+/* =========================================
+   THEME: LIGHT MODE
+   ========================================= */
+[data-theme="light"] {
+    --bg-primary: #faf8f5;
+    --bg-secondary: #f0ebe3;
+    --bg-tertiary: #e6dfd5;
+    --bg-glass: rgba(255, 255, 255, 0.8);
+    --bg-card: #ffffff;
+
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #888888;
+
+    --accent-primary: #ff6b35;
+    /* Warm orange */
+    --accent-secondary: #5b8c5a;
+    /* Sage green */
+    --accent-glow: rgba(255, 107, 53, 0.4);
+
+    --status-danger: #c44536;
+    --status-danger-dark: #7a2015;
+    --status-success: #6b9080;
+    --status-warning: #d4a373;
+
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-card: 4px 4px 0px 0px rgba(0, 0, 0, 0.1);
+    /* Retro pixel shadow */
+
+    /* RGB variants for animations */
+    --accent-primary-rgb: 255, 107, 53;
+    --bg-primary-rgb: 250, 248, 245;
+
+    --font-family-headings: var(--font-pixel);
+    --decorative-element-opacity: 1;
+}
+
+/* Reset & Basics */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}

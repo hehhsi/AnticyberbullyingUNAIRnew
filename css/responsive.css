@@ -1,0 +1,53 @@
+/* =========================================
+   RESPONSIVE LAYOUTS
+   ========================================= */
+
+@media (max-width: 1024px) {
+
+    /* Tablet & Small Laptop */
+    :root {
+        --text-hero: 3rem;
+    }
+
+    .gate {
+        padding: 4rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Devices */
+
+    /* Typography */
+    :root {
+        --text-hero: 2.2rem;
+        --text-4xl: 2rem;
+        --text-2xl: 1.25rem;
+    }
+
+    /* Navbar */
+    .nav-links {
+        display: none;
+        /* Hide for simple MVP, hamburger added later */
+    }
+
+    .navbar {
+        justify-content: space-between;
+    }
+
+    /* Grids */
+    .steps-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stats */
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    /* Mirror */
+    .mirror-frame {
+        padding: 2rem 1rem;
+        border-radius: 20px;
+    }
+}

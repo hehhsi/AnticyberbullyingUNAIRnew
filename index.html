@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaga Ucapanmu - Anti Cyberbullying</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Press+Start+2P&family=Space+Grotesk:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Firebase SDK (compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dark-theme.css">
+    <link rel="stylesheet" href="css/light-theme.css">
+    <link rel="stylesheet" href="css/transitions.css"> <!-- Page Transitions -->
+    <link rel="stylesheet" href="css/overlay.css"> <!-- Case Overlay -->
+    <link rel="stylesheet" href="css/animation-tokens.css"> <!-- Animation System -->
+    <link rel="stylesheet" href="css/story-wall.css"> <!-- Story Wall -->
+</head>
+
+<body>
+
+    <!-- Dynamic Backgrounds -->
+    <div class="background-container">
+        <div class="light-mode-bg">
+            <div class="moving-grid"></div>
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="dark-mode-bg"></div> <!-- Placeholder for future dark mode fx -->
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo-group">
+                <img src="assets/images/UNAIR_LOGO.png" alt="UNAIR Logo" class="nav-logo">
+                <img src="assets/images/Kampus_Berdampak_logo.png" alt="Kampus Berdampak Logo" class="nav-logo">
+                <img src="assets/images/smam1gresik.png" alt="SMA M1 Gresik Logo" class="nav-logo">
+            </div>
+            <span class="logo-divider"></span>
+            <div class="logo-text-group">
+                <div class="logo-text">ANTI<span class="highlight">BULLY</span></div>
+                <div class="logo-subtitle">Prodi Studi Bahasa &amp; Sastra Inggris · FIB UNAIR</div>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="https://www.instagram.com/xelimoop?igsh=djJkZjMxeTY5NXNp" target="_blank"
+                    rel="noopener">Support Us</a></li>
+        </ul>
+
+        <div class="theme-toggle-container">
+            <!-- Ghost Toggle Switch -->
+            <label class="switch" aria-label="Toggle Dark/Light Mode">
+                <input id="theme-toggle" type="checkbox" />
+                <div class="slider round">
+                    <div>
+                        <div class="ghost"></div>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </nav>
+
+    <main class="story-container">
+
+        <!-- SECTION 1: HERO / ENTRY GATE -->
+        <!-- SECTION 1: HERO / ENTRY GATE -->
+        <section id="home" class="gate section-hero">
+            <div class="hero-bg-layer layer-dark"></div>
+            <div class="hero-bg-layer layer-light"></div>
+            <div class="hero-overlay"></div>
+
+            <div class="gate-content fade-in-up">
+                <div class="hero-badge">#StopCyberbullying</div>
+                <h1 class="hero-title">
+                    <span class="line-1">Jaga</span>
+                    <span class="line-2 highlight-text">Ucapanmu</span>
+                </h1>
+                <h2 class="hero-subtitle">Bertanggung Jawab Atas Tindakanmu</h2>
+                <p class="hero-description">
+                    Di dunia maya, ketikanmu adalah cerminan hatimu.
+                    Jangan biarkan jarimu melukai jiwa orang lain.
+                </p>
+                <div class="scroll-indicator scroll-hint">
+                    <span>Gulir untuk melihat kenyataan</span>
+                    <div class="arrow-down">↓</div>
+                </div>
+            </div>
+            <!-- hero-background-fx removed as we are using full bg now -->
+        </section>
+
+        <!-- SECTION 2: PROBLEM GATE (REAL CASES) -->
+        <section id="problem" class="gate section-problem">
+            <div class="section-header fade-reveal">
+                <span class="section-tag">REALITA</span>
+                <h2>Ini Bukan Sekadar Angka</h2>
+                <p class="section-sub">Mereka Adalah Nyawa yang Hilang</p>
+            </div>
+
+            <div class="stats-grid fade-reveal delay-1">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="48">%</div>
+                    <div class="stat-label">Anak Mengalami<br>Perundungan</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="25">%</div>
+                    <div class="stat-label">Kenaikan Kasus<br>Tahun 2025</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="25">Kasus</div>
+                    <div class="stat-label">Bunuh Diri Anak<br>Tahun 2025</div>
+                </div>
+            </div>
+
+            <div class="cases-carousel fade-reveal delay-2">
+                <!-- Case 1 -->
+                <article class="case-card">
+                    <div class="case-badge">Internasional</div>
+                    <div class="case-content">
+                        <h3>Amanda Todd</h3>
+                        <div class="case-meta">Canada, 2012 • 15 Tahun</div>
+                        <p>Korban pemerasan & cyberbullying bertahun-tahun. Kisah tragisnya melalui video flashcards
+                            mengguncang dunia dan memicu perubahan hukum.</p>
+                        <a href="#" class="case-link" data-case="amanda-todd">Baca Kisahnya →</a>
+                    </div>
+                </article>
+
+                <!-- Case 2 -->
+                <article class="case-card highlight-case">
+                    <div class="case-badge">Indonesia</div>
+                    <div class="case-content">
+                        <h3>Ajeng</h3>
+                        <div class="case-meta">Sukabumi, 2025 • 14 Tahun</div>
+                        <p>Siswi MTs yang meninggalkan surat wasiat memilukan. Perundungan teman sekolah mendorongnya
+                            mengambil keputusan fatal.</p>
+                        <a href="#" class="case-link" data-case="ajeng">Baca Kisahnya →</a>
+                    </div>
+                </article>
+
+                <!-- Case 3 -->
+                <article class="case-card">
+                    <div class="case-badge">Indonesia</div>
+                    <div class="case-content">
+                        <h3>Dr. Aulia Risma</h3>
+                        <div class="case-meta">Semarang, 2024 • Mahasiswi</div>
+                        <p>Bukti bahwa perundungan terjadi di tingkat tertinggi akademik. Tekanan dan bullying
+                            senioritas berujung duka.</p>
+                        <a href="#" class="case-link" data-case="aulia-risma">Baca Kisahnya →</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="problem-footer fade-reveal delay-3">
+                <p><span class="highlight-danger">"Kata-kata bisa membunuh."</span><br>Secara harfiah.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: REFLECTION GATE -->
+        <!-- SECTION 3: REFLECTION GATE (3D MIRROR) -->
+        <section id="reflection" class="gate section-reflection">
+            <div class="mirror-layout-container">
+                <!-- Header -->
+                <div class="mirror-header fade-reveal">
+                    <h2>LIHAT KE DALAM CERMIN
+
+                    </h2>
+                </div>
+
+                <!-- 3D Visual (The Mirror) -->
+                <div class="mirror-visual-wrapper fade-in-up delay-1">
+                    <div id="world"></div>
+                    <!-- Controls Overlay (Absolute positioned or just below) -->
+                    <div class="mirror-controls">
+                        <label class="camera-switch">
+                            <input type="checkbox" id="cameraParams">
+                            <span class="slider round"></span>
+                            <span class="switch-label">Aktifkan Cermin (Kamera)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Hidden Video Element for Texture -->
+                <video id="webcam" autoplay playsinline style="display:none;"></video>
+
+                <!-- Questions List -->
+                <div class="mirror-questions fade-reveal delay-2">
+                    <div class="question-card">
+                        <p>"Pernahkah kamu mengetik sesuatu yang tak akan kamu ucapkan langsung?"</p>
+                    </div>
+                    <div class="question-card">
+                        <p>"Pernahkah kamu melihat perundungan dan memilih untuk diam?"</p>
+                    </div>
+                    <div class="question-card">
+                        <p>"Pernahkah kamu menghakimi seseorang tanpa mengetahui kisahnya?"</p>
+                    </div>
+                    <div class="question-card">
+                        <p>"Pernahkah komentarmu menyakiti tanpa kamu sadari?"</p>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="mirror-footer fade-reveal delay-3">
+                    <p>"Kita semua pernah. Mari berubah."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scripts for 3D Mirror (Three.js & Dat.GUI) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"></script>
+        <script type="module" src="js/mirror.js"></script>
+
+        <!-- SECTION 4: SOLUTION GATE -->
+        <section id="solution" class="gate section-solution">
+            <div class="section-header fade-reveal">
+                <span class="section-tag">SOLUSI</span>
+                <h2>Jadilah Bagian dari Perubahan</h2>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card fade-reveal delay-1">
+                    <div class="step-icon">
+                        <!-- Brain Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-cpu">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                            <rect x="9" y="9" width="6" height="6"></rect>
+                            <line x1="9" y1="1" x2="9" y2="4"></line>
+                            <line x1="15" y1="1" x2="15" y2="4"></line>
+                            <line x1="9" y1="20" x2="9" y2="23"></line>
+                            <line x1="15" y1="20" x2="15" y2="23"></line>
+                            <line x1="20" y1="9" x2="23" y2="9"></line>
+                            <line x1="20" y1="14" x2="23" y2="14"></line>
+                            <line x1="1" y1="9" x2="4" y2="9"></line>
+                            <line x1="1" y1="14" x2="4" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3>Pikir Sebelum Ketik</h3>
+                    <p>Tahan 5 detik. Apakah ini benar? Apakah ini baik? Apakah ini perlu?</p>
+                </div>
+                <div class="step-card fade-reveal delay-2">
+                    <div class="step-icon">
+                        <!-- Megaphone/Speak Up SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-mic">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="23"></line>
+                            <line x1="8" y1="23" x2="16" y2="23"></line>
+                        </svg>
+                    </div>
+                    <h3>Berani Bicara</h3>
+                    <p>Jangan diam saat melihat teman dibully. Laporkan ke guru atau orang tua.</p>
+                </div>
+                <div class="step-card fade-reveal delay-3">
+                    <div class="step-icon">
+                        <!-- Shield/Block SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-shield">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Blokir & Lapor</h3>
+                    <p>Gunakan fitur keamanan platform. Jangan ladeni, langsung blokir.</p>
+                </div>
+                <div class="step-card fade-reveal delay-4">
+                    <div class="step-icon">
+                        <!-- Heart/Support SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-heart">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Dukung Korban</h3>
+                    <p>Jadilah teman yang mendengar. "Kamu tidak sendirian" sangat berarti.</p>
+                </div>
+            </div>
+
+            <div class="hotline-box fade-reveal delay-5">
+                <h4>📞 Butuh Bantuan?</h4>
+                <p>Hubungi <strong>SEJIWA (119 ext 8)</strong> atau KPAI</p>
+            </div>
+        </section>
+
+        <!-- SECTION: DINDING CERITA (Story Wall) -->
+        <section id="story-wall" class="gate">
+            <div class="sw-header fade-reveal">
+                <h2 class="sw-title">Dinding Cerita</h2>
+                <p class="sw-subtitle">Ribuan suara, satu tujuan &mdash; untuk didengar.</p>
+                <div class="sw-ornament" aria-hidden="true">
+                    <span class="sw-ornament-dot"></span>
+                    <span class="sw-ornament-dot"></span>
+                    <span class="sw-ornament-dot"></span>
+                </div>
+            </div>
+
+            <div id="sw-board" class="sw-board fade-reveal delay-1" role="region"
+                aria-label="Dinding Cerita — papan cerita anonim">
+                <div class="sw-board-nail sw-nail-tl" aria-hidden="true"></div>
+                <div class="sw-board-nail sw-nail-tr" aria-hidden="true"></div>
+                <div class="sw-board-nail sw-nail-bl" aria-hidden="true"></div>
+                <div class="sw-board-nail sw-nail-br" aria-hidden="true"></div>
+                <div class="sw-spotlight-overlay" aria-hidden="true"></div>
+                <div class="sw-empty-state" id="sw-empty-state">
+                    <p>Belum ada cerita. Jadilah yang pertama berbagi. 💛</p>
+                </div>
+            </div>
+
+            <button id="sw-add-btn" class="sw-add-btn fade-reveal delay-2">
+                <span class="sw-add-icon" aria-hidden="true">+</span>
+                <span class="sw-add-label">Tambah ceritamu</span>
+            </button>
+
+            <p class="sw-disclaimer fade-reveal delay-3">Cerita di sini bersifat publik dan anonim</p>
+        </section>
+
+        <!-- Read Modal -->
+        <div id="sw-read-modal" class="sw-modal-backdrop" role="dialog" aria-modal="true" aria-label="Baca cerita">
+            <div class="sw-modal sw-read-modal-card">
+                <button id="sw-read-close" class="sw-modal-close" aria-label="Tutup">&times;</button>
+                <div class="sw-read-prompt-label">
+                    <span class="dot"></span>
+                    <span class="label-text"></span>
+                </div>
+                <p class="sw-read-text"></p>
+                <div class="sw-read-meta">
+                    <span class="sw-read-anon"></span>
+                    <span class="sw-read-time"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Write Modal -->
+        <div id="sw-write-modal" class="sw-modal-backdrop" role="dialog" aria-modal="true" aria-label="Tulis cerita">
+            <div class="sw-modal sw-write-modal-card">
+                <button id="sw-write-close" class="sw-modal-close" aria-label="Tutup">&times;</button>
+                <div class="sw-write-form">
+                    <h3 class="sw-write-title">Tempelkan Ceritamu</h3>
+                    <p class="sw-anon-note">🔒 Namamu akan dianonimkan otomatis</p>
+                    <div class="sw-prompt-options">
+                        <label class="sw-prompt-option selected">
+                            <input type="radio" name="sw-prompt" value="experienced" checked>
+                            <span class="sw-prompt-dot" style="background: #ef4444;"></span>
+                            <span class="sw-prompt-label">Aku pernah mengalami...</span>
+                        </label>
+                        <label class="sw-prompt-option">
+                            <input type="radio" name="sw-prompt" value="recovery">
+                            <span class="sw-prompt-dot" style="background: #10b981;"></span>
+                            <span class="sw-prompt-label">Yang membantuku bangkit...</span>
+                        </label>
+                        <label class="sw-prompt-option">
+                            <input type="radio" name="sw-prompt" value="message">
+                            <span class="sw-prompt-dot" style="background: #3b82f6;"></span>
+                            <span class="sw-prompt-label">Pesanku untuk kamu...</span>
+                        </label>
+                    </div>
+                    <div class="sw-textarea-wrapper">
+                        <textarea class="sw-textarea" placeholder="Tulis di sini..." maxlength="200"
+                            aria-label="Tulis ceritamu (maksimum 200 karakter)"></textarea>
+                        <div class="sw-char-counter" aria-live="polite">200/200</div>
+                    </div>
+                    <button id="sw-submit-btn" class="sw-submit-btn">Tempel di Papan</button>
+                    <div class="sw-error" role="alert"></div>
+                </div>
+                <div class="sw-rate-limit-msg" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: MORAL GATE -->
+        <section id="moral" class="gate section-moral">
+            <div class="moral-content fade-reveal">
+                <div class="moral-art">
+                    <!-- Abstract art or pixel art depending on theme -->
+                    <div class="art-element">❤️</div>
+                </div>
+                <h2>Inti dari Semuanya</h2>
+                <div class="moral-text">
+                    <p>Di balik setiap layar ada <strong>manusia</strong>.</p>
+                    <p>Di balik setiap username ada <strong>hati</strong>.</p>
+                    <p class="moral-highlight">Kata-katamu punya kekuatan untuk menyembuhkan atau menyakiti.</p>
+                </div>
+                <div class="moral-quote">
+                    "Satu komentar baik bisa mengubah hari seseorang. Satu komentar jahat bisa menghancurkan hidupnya."
+                </div>
+                <div class="cta-mini">Pilih Kebaikan.</div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: CLOSING GATE -->
+        <section id="closing" class="gate section-closing">
+            <div class="closing-content fade-in-up">
+                <div class="closing-badge">Langkah Pertama</div>
+                <h2>Jadilah Bagian dari<br><span class="highlight-text">Perubahan</span></h2>
+                <p class="closing-description">
+                    Bergabunglah dengan ribuan orang yang memilih untuk<br>
+                    menciptakan internet yang lebih ramah dan aman.
+                </p>
+
+                <div class="cta-group">
+                    <a href="education.html" class="btn btn-primary nav-transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                        </svg>
+                        Pelajari Lebih
+                    </a>
+                    <a href="about.html" class="btn btn-secondary nav-transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                        Tentang Kami
+                    </a>
+                </div>
+
+                <div class="hashtags">
+                    <span>#StopCyberbullying</span>
+                    <span>#BeKind</span>
+                    <span>#JagaUcapanmu</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Anti-Cyberbullying Campaign. Created for Advocacy.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase Init -->
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDViinQPC4wXtQQTubrAGZCxg00ERewMho",
+            authDomain: "board-cyber-bullying-web.firebaseapp.com",
+            projectId: "board-cyber-bullying-web",
+            storageBucket: "board-cyber-bullying-web.firebasestorage.app",
+            messagingSenderId: "946367348986",
+            appId: "1:946367348986:web:23b2caf7752392ace3c943"
+        };
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+    </script>
+
+    <!-- Scripts -->
+    <script src="js/scroll-animations.js"></script>
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/case-overlay.js"></script>
+    <script src="js/animation-controller.js"></script>
+    <script src="js/story-wall.js"></script>
+
+    <!-- Case Story Overlay -->
+    <div id="caseOverlay" class="case-overlay">
+        <div id="overlayContent" class="overlay-content">
+            <button id="overlayClose" class="overlay-close" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+
+            <div class="overlay-header">
+                <div id="overlayEmoji" class="overlay-photo-placeholder">👤</div>
+                <div class="overlay-info">
+                    <h2 id="overlayName">Nama Korban</h2>
+                    <p id="overlayMeta">Lokasi, Tahun • Usia</p>
+                </div>
+            </div>
+
+            <div class="overlay-timeline">
+                <h3>Kronologi</h3>
+                <div id="overlayTimeline" class="timeline">
+                    <!-- Timeline items populated by JS -->
+                </div>
+            </div>
+
+            <div class="overlay-sources">
+                <h3>Sumber</h3>
+                <div id="overlaySources" class="source-list">
+                    <!-- Source links populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

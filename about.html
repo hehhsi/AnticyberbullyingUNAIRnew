@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Anti Cyberbullying</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Press+Start+2P&family=Space+Grotesk:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/about.css"> <!-- New Specific CSS -->
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dark-theme.css">
+    <link rel="stylesheet" href="css/light-theme.css">
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+
+    <!-- Dynamic Backgrounds (Same as Home) -->
+    <div class="background-container">
+        <div class="light-mode-bg">
+            <div class="moving-grid"></div>
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+        </div>
+        <div class="dark-mode-bg"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo-group">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/UNAIR_LOGO.png" alt="UNAIR Logo" class="nav-logo">
+                </a>
+                <img src="assets/images/Kampus_Berdampak_logo.png" alt="Kampus Berdampak Logo" class="nav-logo">
+                <img src="assets/images/smam1gresik.png" alt="SMA M1 Gresik Logo" class="nav-logo">
+            </div>
+            <span class="logo-divider"></span>
+            <div class="logo-text-group">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-text">ANTI<span class="highlight">BULLY</span></div>
+                </a>
+                <div class="logo-subtitle">Prodi Studi Bahasa &amp; Sastra Inggris · FIB UNAIR</div>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-transition">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="index.html#support">Support Us</a></li>
+        </ul>
+
+        <div class="theme-toggle-container">
+            <label class="switch" aria-label="Toggle Dark/Light Mode">
+                <input id="theme-toggle" type="checkbox" />
+                <div class="slider round">
+                    <div>
+                        <div class="ghost"></div>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </nav>
+
+    <main class="about-container">
+
+        <!-- Header Section -->
+        <header class="about-header fade-in-up">
+            <h1 class="page-title">Tim <span class="highlight-text">Di Balik Layar</span></h1>
+            <p class="page-subtitle">Bersatu menyuarakan kebaikan digital.</p>
+        </header>
+
+        <!-- Team Grid -->
+        <section class="team-section">
+
+            <!-- 👑 KETUA CARD (Featured) -->
+            <!-- EDIT HERE: Change details below -->
+            <div class="team-card leader-card fade-reveal delay-1">
+                <div class="card-glow"></div>
+                <div class="badge-crown">👑 KETUA</div>
+
+                <div class="avatar-container">
+                    <!-- 🖼️ UPLOAD 2 FOTO: Satu untuk Light Mode, Satu untuk Dark Mode -->
+                    <!-- LIGHT MODE PHOTO -->
+                    <img src="source/light/l1.jpeg" alt="Foto Ketua" class="team-avatar avatar-light">
+                    <!-- DARK MODE PHOTO -->
+                    <img src="source/dark/l1.jpeg" alt="Foto Ketua" class="team-avatar avatar-dark">
+                </div>
+
+                <div class="card-info">
+                    <h2 class="member-name">Prayoga</h2> <!-- ✏️ Tulis Nama -->
+                    <p class="member-class">Kelas X - XELIMOO</p> <!-- ✏️ Tulis Kelas -->
+
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/prayoga41517?igsh=MWxmNzA5eDllY2xyMQ==" target="_blank"
+                            class="social-icon" aria-label="Instagram">
+                            <!-- 🔗 Ganti href="#" dengan link IG -->
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="https://www.chess.com/home" target="_blank" class="social-icon" aria-label="TikTok">
+                            <!-- 🔗 Ganti href="#" dengan link TikTok -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="currentColor" stroke="none">
+                                <path
+                                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MEMBERS GRID -->
+            <div class="members-grid">
+
+                <!-- MEMBER 1 -->
+                <div class="team-card fade-reveal delay-2">
+                    <div class="avatar-container">
+                        <!-- 🖼️ UPLOAD 2 FOTO MEMBER 1 -->
+                        <img src="source/light/l5.jpeg" alt="Member 1" class="team-avatar avatar-light">
+                        <img src="source/dark/l5.jpeg" alt="Member 1" class="team-avatar avatar-dark">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="member-name">Kenzie</h3> <!-- ✏️ Tulis Nama -->
+                        <p class="member-class">Kelas X - XELIMOO</p> <!-- ✏️ Tulis Kelas -->
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/kenziefurher?igsh=MTVteWx4a3hjMGlicA==" target="_blank"
+                                class="social-icon"><i data-feather="instagram"></i></a>
+                            <a href="https://www.chess.com/home" target="_blank" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="currentColor" stroke="none">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEMBER 2 -->
+                <div class="team-card fade-reveal delay-2">
+                    <div class="avatar-container">
+                        <!-- 🖼️ UPLOAD 2 FOTO MEMBER 2 -->
+                        <img src="assets/images/team/light/member2.jpg" alt="Member 2" class="team-avatar avatar-light">
+                        <img src="assets/images/team/dark/member2.jpg" alt="Member 2" class="team-avatar avatar-dark">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="member-name">Nama Anggota 2</h3>
+                        <p class="member-class">Kelas XI - RPL 1</p>
+                        <div class="social-links">
+                            <a href="#" class="social-icon"><i data-feather="instagram"></i></a>
+                            <a href="#" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="currentColor" stroke="none">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEMBER 3 -->
+                <div class="team-card fade-reveal delay-3">
+                    <div class="avatar-container">
+                        <!-- 🖼️ UPLOAD 2 FOTO MEMBER 3 -->
+                        <img src="assets/images/team/light/member3.jpg" alt="Member 3" class="team-avatar avatar-light">
+                        <img src="assets/images/team/dark/member3.jpg" alt="Member 3" class="team-avatar avatar-dark">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="member-name">Nama Anggota 3</h3>
+                        <p class="member-class">Kelas XI - RPL 1</p>
+                        <div class="social-links">
+                            <a href="#" class="social-icon"><i data-feather="instagram"></i></a>
+                            <a href="#" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="currentColor" stroke="none">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MEMBER 4 -->
+                <div class="team-card fade-reveal delay-3">
+                    <div class="avatar-container">
+                        <!-- 🖼️ UPLOAD 2 FOTO MEMBER 4 -->
+                        <img src="assets/images/team/light/member4.jpg" alt="Member 4" class="team-avatar avatar-light">
+                        <img src="assets/images/team/dark/member4.jpg" alt="Member 4" class="team-avatar avatar-dark">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="member-name">Nama Anggota 4</h3>
+                        <p class="member-class">Kelas XI - RPL 1</p>
+                        <div class="social-links">
+                            <a href="#" class="social-icon"><i data-feather="instagram"></i></a>
+                            <a href="#" class="social-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="currentColor" stroke="none">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Anti-Cyberbullying Campaign.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/theme-toggle.js"></script>
+    <script src="js/scroll-animations.js"></script>
+    <script src="js/transitions.js"></script>
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+    </script>
+</body>
+
+</html>

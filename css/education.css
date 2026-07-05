@@ -1,0 +1,667 @@
+/* =========================================
+   EDUCATION PAGE - Cinematic Scroll Experience
+   ========================================= */
+
+/* Base Layout */
+.education-page {
+    overflow-x: hidden;
+}
+
+.education-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+/* Chapter Navigation (Progress Dots) */
+.chapter-nav {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.chapter-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chapter-dot:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.2);
+}
+
+.chapter-dot.active {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* Back Button */
+.back-button {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    transform: translateX(-5px);
+}
+
+.back-button svg {
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover svg {
+    transform: translateX(-3px);
+}
+
+/* =========================================
+   CHAPTER BASE STYLES
+   ========================================= */
+
+.chapter {
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.chapter-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    transition: opacity 0.5s ease;
+}
+
+.chapter-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.chapter-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.chapter.active .chapter-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   CHAPTER MOODS (Color Themes)
+   ========================================= */
+
+/* Mysterious (Chapter 1) */
+.chapter[data-mood="mysterious"] .chapter-bg {
+    background: linear-gradient(180deg, #0a0a15 0%, #1a1a2e 50%, #0a0a15 100%);
+}
+
+/* Heavy (Chapter 2) */
+.chapter[data-mood="heavy"] .chapter-bg {
+    background: linear-gradient(180deg, #150a0a 0%, #2e1a1a 50%, #150a0a 100%);
+}
+
+.chapter[data-mood="heavy"] .highlight {
+    color: #ff4444;
+}
+
+/* Calming (Chapter 3) */
+.chapter[data-mood="calming"] .chapter-bg {
+    background: linear-gradient(180deg, #0a1520 0%, #1a2e3a 50%, #0a1520 100%);
+}
+
+.chapter[data-mood="calming"] .highlight {
+    color: #44aaff;
+}
+
+/* Supportive (Chapter 4) */
+.chapter[data-mood="supportive"] .chapter-bg {
+    background: linear-gradient(180deg, #0a1510 0%, #1a3a2e 50%, #0a1510 100%);
+}
+
+.chapter[data-mood="supportive"] .highlight {
+    color: #44ffaa;
+}
+
+/* Hopeful (Chapter 5) */
+.chapter[data-mood="hopeful"] .chapter-bg {
+    background: linear-gradient(180deg,
+            var(--bg-primary) 0%,
+            rgba(0, 212, 255, 0.1) 50%,
+            var(--bg-primary) 100%);
+}
+
+/* =========================================
+   TEXT ANIMATIONS
+   ========================================= */
+
+.reveal-title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-family: var(--font-family-headings);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.reveal-title .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chapter.active .reveal-title .word {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chapter.active .reveal-title .word:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.chapter.active .reveal-title .word:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.chapter.active .reveal-title .word:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.chapter.active .reveal-title .word:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.chapter.active .reveal-title .word:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.reveal-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease 0.5s;
+}
+
+.chapter.active .reveal-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.highlight {
+    color: var(--accent-primary);
+}
+
+/* =========================================
+   CHAPTER 1: EXAMPLE CARDS
+   ========================================= */
+
+.example-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.example-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+}
+
+.chapter.active .example-card:nth-child(1) {
+    transition-delay: 0.6s;
+}
+
+.chapter.active .example-card:nth-child(2) {
+    transition-delay: 0.75s;
+}
+
+.chapter.active .example-card:nth-child(3) {
+    transition-delay: 0.9s;
+}
+
+.chapter.active .example-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.example-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-5px);
+}
+
+.example-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-primary);
+}
+
+.example-icon svg {
+    stroke: var(--accent-primary);
+}
+
+.example-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.example-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Scroll Prompt */
+.scroll-prompt {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.5s forwards;
+}
+
+.scroll-prompt span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.scroll-arrow {
+    font-size: 1.5rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 0.7;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* =========================================
+   CHAPTER 2: IMPACT STATS
+   ========================================= */
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
+
+.impact-card {
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid rgba(255, 68, 68, 0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s ease;
+}
+
+.chapter.active .impact-card {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.chapter.active .impact-card:nth-child(1) {
+    transition-delay: 0.2s;
+}
+
+.chapter.active .impact-card:nth-child(2) {
+    transition-delay: 0.35s;
+}
+
+.chapter.active .impact-card:nth-child(3) {
+    transition-delay: 0.5s;
+}
+
+.chapter.active .impact-card:nth-child(4) {
+    transition-delay: 0.65s;
+}
+
+.impact-stat {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ff4444;
+    display: inline;
+}
+
+.impact-unit {
+    font-size: 1.5rem;
+    color: #ff4444;
+    display: inline;
+}
+
+.impact-card p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.chapter-quote {
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-top: 2rem;
+    opacity: 0;
+    transition: opacity 1s ease 1s;
+}
+
+.chapter.active .chapter-quote {
+    opacity: 1;
+}
+
+/* =========================================
+   CHAPTER 3: STEP CARDS
+   ========================================= */
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 2rem auto 0;
+}
+
+.step-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: left;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.5s ease;
+}
+
+.chapter.active .step-card {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.chapter.active .step-card:nth-child(1) {
+    transition-delay: 0.2s;
+}
+
+.chapter.active .step-card:nth-child(2) {
+    transition-delay: 0.35s;
+}
+
+.chapter.active .step-card:nth-child(3) {
+    transition-delay: 0.5s;
+}
+
+.chapter.active .step-card:nth-child(4) {
+    transition-delay: 0.65s;
+}
+
+.chapter.active .step-card:nth-child(5) {
+    transition-delay: 0.8s;
+}
+
+.step-card:hover {
+    border-color: #44aaff;
+    transform: translateX(10px);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #44aaff, #0066cc);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.step-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* =========================================
+   CHAPTER 4: ACTION CARDS
+   ========================================= */
+
+.chapter-intro {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    opacity: 0;
+    transition: opacity 0.6s ease 0.5s;
+}
+
+.chapter.active .chapter-intro {
+    opacity: 1;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.action-card {
+    background: rgba(68, 255, 170, 0.1);
+    border: 1px solid rgba(68, 255, 170, 0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s ease;
+}
+
+.chapter.active .action-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chapter.active .action-card:nth-child(1) {
+    transition-delay: 0.3s;
+}
+
+.chapter.active .action-card:nth-child(2) {
+    transition-delay: 0.45s;
+}
+
+.chapter.active .action-card:nth-child(3) {
+    transition-delay: 0.6s;
+}
+
+.chapter.active .action-card:nth-child(4) {
+    transition-delay: 0.75s;
+}
+
+.action-card:hover {
+    border-color: #44ffaa;
+    transform: translateY(-5px);
+}
+
+.action-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #44ffaa;
+}
+
+.action-icon svg {
+    stroke: #44ffaa;
+}
+
+.action-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.action-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* =========================================
+   CHAPTER 5: MEGA TEXT
+   ========================================= */
+
+.affirmation-container {
+    margin-bottom: 3rem;
+}
+
+.mega-text {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-family: var(--font-family-headings);
+    line-height: 1;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chapter.active .mega-text {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.affirmation-list {
+    margin: 3rem 0;
+}
+
+.affirmation-item {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin: 1rem 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.chapter.active .affirmation-item:nth-child(1) {
+    transition-delay: 0.8s;
+}
+
+.chapter.active .affirmation-item:nth-child(2) {
+    transition-delay: 1s;
+}
+
+.chapter.active .affirmation-item:nth-child(3) {
+    transition-delay: 1.2s;
+}
+
+.chapter.active .affirmation-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.final-cta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    opacity: 0;
+    transition: opacity 0.6s ease 1.5s;
+}
+
+.chapter.active .final-cta {
+    opacity: 1;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+    .chapter-nav {
+        right: 1rem;
+    }
+
+    .chapter-content {
+        padding: 1.5rem;
+    }
+
+    .back-button span {
+        display: none;
+    }
+
+    .back-button {
+        padding: 0.75rem;
+    }
+
+    .mega-text {
+        font-size: clamp(2.5rem, 12vw, 5rem);
+    }
+
+    .step-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .step-number {
+        margin: 0 auto;
+    }
+}
