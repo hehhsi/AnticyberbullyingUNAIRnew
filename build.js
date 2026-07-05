@@ -8,20 +8,31 @@ if (!fs.existsSync(distPath)) {
     fs.mkdirSync(distPath, { recursive: true });
 }
 
-// Folders to copy
+function copyRecursiveSync(src, dest) {
+    if (!fs.existsSync(src)) return;
+    const stats = fs.statSync(src);
+    if (stats.isDirectory()) {
+        if (!fs.existsSync(dest)) {
+            fs.mkdirSync(dest, { recursive: true });
+        }
+        fs.readdirSync(src).forEach(childItemName => {
+            copyRecursiveSync(path.join(src, childItemName), path.join(dest, childItemName));
+        });
+    } else {
+        fs.copyFileSync(src, dest);
+    }
+}
+
 const folders = ['js', 'css', 'assets', 'source'];
-// Files to copy
 const files = ['index.html', 'about.html', 'education.html', 'style.css', 'script.js'];
 
 folders.forEach(folder => {
-    if (fs.existsSync(folder)) {
-        fs.cpSync(folder, path.join(distPath, folder), { recursive: true });
-    }
+    copyRecursiveSync(path.join(__dirname, folder), path.join(distPath, folder));
 });
 
 files.forEach(file => {
     if (fs.existsSync(file)) {
-        fs.copyFileSync(file, path.join(distPath, file));
+        fs.copyFileSync(path.join(__dirname, file), path.join(distPath, file));
     }
 });
 
